@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analyst Portfolio — Marketing & Commercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Geist+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #07080f;
+  --bg2:       #0d0f1c;
+  --bg3:       #121428;
+  --surface:   #181a30;
+  --surface2:  #1e2038;
+  --border:    rgba(110,120,255,0.10);
+  --border-md: rgba(110,120,255,0.18);
+  --border-hi: rgba(110,120,255,0.35);
+  --blue:      #4f8eff;
+  --blue-dim:  #2a5cbf;
+  --violet:    #9b6bff;
+  --violet-dim:#6b3fbf;
+  --indigo:    #6e78ff;
+  --sky:       #60c8f5;
+  --text:      #e4e6f5;
+  --text-dim:  #8890b8;
+  --text-faint:#454a6e;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body:    'Instrument Sans', sans-serif;
+  --font-mono:    'Geist Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.65;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");opacity:.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:rgba(7,8,15,0.82);backdrop-filter:blur(24px)}
+.nav-logo{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.nav-logo .dot{color:var(--violet)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-family:var(--font-mono);font-size:.72rem;padding:.45rem 1.1rem;border-radius:6px;background:rgba(79,142,255,0.12);border:1px solid rgba(79,142,255,0.3);color:var(--blue);text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:rgba(79,142,255,0.22)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 5rem;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.orb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(79,142,255,0.14),transparent 65%);top:-150px;right:-100px;animation:drift1 12s ease-in-out infinite alternate}
+.orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(155,107,255,0.12),transparent 65%);bottom:-100px;left:-50px;animation:drift2 15s ease-in-out infinite alternate}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(96,200,245,0.07),transparent 65%);top:40%;left:40%;animation:drift3 10s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0)}to{transform:translate(-40px,60px)}}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(60px,-40px)}}
+@keyframes drift3{from{transform:translate(0,0)}to{transform:translate(-30px,30px)}}
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(110,120,255,0.18) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse 70% 60% at 60% 40%,black 0%,transparent 100%)}
+.hero-eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.8rem;opacity:0;animation:up .6s .15s ease forwards}
+.eyebrow-line{width:32px;height:1px;background:linear-gradient(90deg,var(--blue),var(--violet))}
+.eyebrow-text{font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim);letter-spacing:.14em;text-transform:uppercase}
+.hero h1{font-family:var(--font-display);font-size:clamp(3rem,6.5vw,5.8rem);font-weight:700;line-height:1.08;letter-spacing:-.025em;margin-bottom:1.8rem;opacity:0;animation:up .65s .3s ease forwards}
+.hero h1 .line2{display:block;background:linear-gradient(100deg,var(--blue) 0%,var(--violet) 55%,var(--sky) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .outline{-webkit-text-stroke:1px rgba(255,255,255,0.18);-webkit-text-fill-color:transparent;color:transparent}
+.hero-lead{font-size:1.05rem;color:var(--text-dim);font-weight:400;max-width:480px;line-height:1.7;margin-bottom:2.8rem;opacity:0;animation:up .65s .45s ease forwards}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .65s .6s ease forwards}
+.btn{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;padding:.85rem 2rem;border-radius:8px;text-decoration:none;transition:all .22s;display:inline-block}
+.btn-grad{background:linear-gradient(135deg,var(--blue-dim),var(--violet-dim));color:#fff;border:1px solid transparent;box-shadow:0 0 28px rgba(79,142,255,0.2)}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 0 42px rgba(79,142,255,0.35)}
+.btn-ghost{border:1px solid var(--border-md);color:var(--text-dim);background:rgba(255,255,255,0.03)}
+.btn-ghost:hover{border-color:var(--border-hi);color:var(--text)}
+.hero-stats{position:absolute;bottom:3.5rem;right:3rem;display:flex;gap:3rem;opacity:0;animation:up .65s .75s ease forwards}
+.stat{text-align:right}
+.stat-n{font-family:var(--font-display);font-size:2.2rem;font-weight:700;line-height:1;letter-spacing:-.03em;background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-family:var(--font-mono);font-size:.65rem;color:var(--text-faint);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+.container{padding:6rem 3rem;border-top:1px solid var(--border)}
+.sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
+.sec-idx{font-family:var(--font-mono);font-size:.7rem;color:var(--violet);letter-spacing:.1em}
+.sec-title{font-family:var(--font-display);font-size:2rem;font-weight:700;letter-spacing:-.02em}
+.sec-rule{flex:1;height:1px;background:var(--border)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.sk-card{background:var(--bg2);padding:2rem;transition:background .2s}
+.sk-card:hover{background:var(--bg3)}
+.sk-badge{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .75rem;border-radius:4px;display:inline-block;margin-bottom:1.1rem}
+.sk-badge.b{background:rgba(79,142,255,0.12);color:var(--blue);border:1px solid rgba(79,142,255,0.25)}
+.sk-badge.v{background:rgba(155,107,255,0.12);color:var(--violet);border:1px solid rgba(155,107,255,0.25)}
+.sk-badge.s{background:rgba(96,200,245,0.10);color:var(--sky);border:1px solid rgba(96,200,245,0.22)}
+.sk-badge.i{background:rgba(110,120,255,0.10);color:var(--indigo);border:1px solid rgba(110,120,255,0.22)}
+.sk-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:600;margin-bottom:.4rem;letter-spacing:-.01em}
+.sk-card p{font-size:.88rem;color:var(--text-dim);line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1rem}
+.tag{font-family:var(--font-mono);font-size:.67rem;padding:.22rem .6rem;border-radius:4px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text-faint);letter-spacing:.04em}
+
+/* PROJECTS */
+.proj-featured{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1px}
+.proj-info{background:var(--bg2);padding:3rem}
+.proj-idx{font-family:var(--font-mono);font-size:.67rem;color:var(--text-faint);letter-spacing:.1em;margin-bottom:1.2rem}
+.proj-label{font-family:var(--font-mono);font-size:.67rem;color:var(--violet);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem}
+.proj-info h2{font-family:var(--font-display);font-size:1.9rem;font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-bottom:1rem}
+.proj-info p{font-size:.9rem;color:var(--text-dim);line-height:1.65;margin-bottom:1.5rem}
+.proj-kpis{display:flex;gap:1.5rem;flex-wrap:wrap;padding:1.2rem;margin-bottom:1.8rem;background:rgba(79,142,255,0.05);border:1px solid rgba(79,142,255,0.14);border-radius:10px}
+.kpi-v{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.kpi-l{font-family:var(--font-mono);font-size:.62rem;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase}
+.stack{display:flex;flex-wrap:wrap;gap:.4rem}
+.stag{font-family:var(--font-mono);font-size:.68rem;padding:.28rem .75rem;border-radius:20px;border:1px solid var(--border-md);color:var(--text-dim)}
+
+/* VIZ */
+.proj-viz{background:var(--bg3);padding:2rem;display:flex;flex-direction:column;gap:1.1rem;position:relative;overflow:hidden}
+.proj-viz::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(155,107,255,0.09),transparent 70%);pointer-events:none}
+.viz-lbl{font-family:var(--font-mono);font-size:.63rem;color:var(--text-faint);letter-spacing:.12em;text-transform:uppercase}
+.seg-bars{display:flex;flex-direction:column;gap:.45rem}
+.seg-row{display:flex;align-items:center;gap:.7rem}
+.seg-nm{font-family:var(--font-mono);font-size:.67rem;color:var(--text-dim);width:100px;flex-shrink:0}
+.seg-track{flex:1;height:20px;border-radius:3px;background:rgba(255,255,255,0.03);overflow:hidden}
+.seg-fill{height:100%;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:.5rem;font-family:var(--font-mono);font-size:.63rem;font-weight:500}
+.seg-amt{font-family:var(--font-mono);font-size:.67rem;color:var(--text-faint);width:44px;text-align:right}
+.scatter-box{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem}
+.mkpi{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:6px;padding:.7rem}
+.mkpi-v{font-family:var(--font-display);font-size:1.05rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.1rem}
+.mkpi-l{font-family:var(--font-mono);font-size:.58rem;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase}
+
+/* PROJ ROW */
+.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:1px}
+.proj-card{background:var(--bg2);padding:2.5rem;transition:background .2s}
+.proj-card:hover{background:var(--bg3)}
+.proj-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem}
+.proj-card p{font-size:.88rem;color:var(--text-dim);line-height:1.65;margin-bottom:1.4rem}
+.funnel{display:flex;flex-direction:column;gap:3px;margin-bottom:1.4rem}
+.f-row{display:flex;align-items:center;gap:.7rem}
+.f-lbl{font-family:var(--font-mono);font-size:.65rem;color:var(--text-faint);width:88px;flex-shrink:0}
+.f-track{flex:1;height:26px}
+.f-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:.7rem;font-family:var(--font-mono);font-size:.67rem;color:rgba(255,255,255,0.65);font-weight:500}
+.f-num{font-family:var(--font-mono);font-size:.65rem;color:var(--text-faint);width:44px;text-align:right}
+.churn-row-wrap{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.4rem}
+.donut-wrap{position:relative;width:88px;height:88px;flex-shrink:0}
+.donut-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-pct{font-family:var(--font-display);font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--violet),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.donut-sub{font-family:var(--font-mono);font-size:.55rem;color:var(--text-faint)}
+.churn-details{flex:1}
+.ch-row{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.68rem;padding:.28rem 0;border-bottom:1px solid var(--border);color:var(--text-dim)}
+.ch-row:last-child{border:none}
+
+/* METHODOLOGY */
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.mstep{background:var(--bg2);padding:2rem 1.6rem;transition:background .2s}
+.mstep:hover{background:var(--bg3)}
+.mstep-n{font-family:var(--font-display);font-size:3.5rem;font-weight:700;line-height:1;color:rgba(110,120,255,0.10);margin-bottom:-.3rem}
+.mstep h4{font-family:var(--font-display);font-size:1rem;font-weight:600;margin-bottom:.5rem}
+.mstep h4 em{font-style:normal;color:var(--blue)}
+.mstep p{font-size:.83rem;color:var(--text-dim);line-height:1.55}
+.sql-block{margin-top:2.5rem;background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.sql-bar{display:flex;justify-content:space-between;align-items:center;padding:.65rem 1.5rem;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border)}
+.sql-name{font-family:var(--font-mono);font-size:.67rem;color:var(--text-faint);letter-spacing:.08em}
+.sql-lang{font-family:var(--font-mono);font-size:.65rem;color:var(--violet);letter-spacing:.1em}
+pre{padding:1.5rem;overflow-x:auto;font-family:var(--font-mono);font-size:.76rem;line-height:1.75;color:#9aa8d0}
+.kw{color:#7090ff}.fn{color:#a0c4ff}.cm{color:#354060;font-style:italic}.str{color:#a588ff}.nc{color:#ff7eb6}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.5rem}
+.res-card{background:var(--bg2);padding:2rem}
+.res-num{font-family:var(--font-display);font-size:2.8rem;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:.5rem}
+.res-card h4{font-size:.95rem;font-weight:500;margin-bottom:.35rem}
+.res-card p{font-size:.84rem;color:var(--text-dim);line-height:1.55}
+.recos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.reco{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.5rem;border-left:3px solid var(--blue)}
+.reco.mid{border-left-color:var(--violet)}
+.reco.low{border-left-color:#ff5f7a}
+.reco-seg{font-family:var(--font-mono);font-size:.62rem;color:var(--text-faint);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.reco h4{font-family:var(--font-display);font-size:.98rem;font-weight:600;margin-bottom:.7rem}
+.reco ul{list-style:none;font-size:.82rem;color:var(--text-dim);line-height:1.75}
+.reco li::before{content:'→ ';color:var(--blue)}
+.reco.mid li::before{color:var(--violet)}
+.reco.low li::before{color:#ff5f7a}
+
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-txt h2{font-family:var(--font-display);font-size:2.4rem;font-weight:700;letter-spacing:-.025em;line-height:1.12;margin-bottom:1.4rem}
+.about-txt h2 span{background:linear-gradient(100deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.about-txt p{font-size:.92rem;color:var(--text-dim);line-height:1.7;margin-bottom:1rem}
+.about-txt p strong{color:var(--text);font-weight:500}
+.about-cta{margin-top:2rem}
+.sk-group{margin-bottom:1.8rem}
+.sk-group-title{font-family:var(--font-mono);font-size:.63rem;color:var(--blue);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.7rem}
+.sk-pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.sk-pill{font-family:var(--font-mono);font-size:.72rem;padding:.35rem .85rem;border-radius:5px;background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text-dim);transition:all .2s}
+.sk-pill:hover{border-color:var(--border-hi);color:var(--text)}
+
+/* CONTACT */
+.contact-wrap{text-align:center;padding:7rem 3rem 6rem;border-top:1px solid var(--border)}
+.contact-wrap h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.8rem);font-weight:700;letter-spacing:-.03em;margin-bottom:1rem}
+.contact-wrap h2 span{background:linear-gradient(100deg,var(--blue) 10%,var(--violet) 60%,var(--sky) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.contact-wrap p{color:var(--text-dim);font-size:1rem;margin-bottom:2.5rem}
+.contact-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* FOOTER */
+footer{padding:1.8rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-family:var(--font-mono);font-size:.67rem;color:var(--text-faint)}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-family:var(--font-mono);font-size:.67rem;color:var(--text-faint);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--text-dim)}
+
+/* ANIM */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:3px}
+
+@media(max-width:920px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{padding:7rem 1.5rem 5rem}
+  .hero-stats{position:static;flex-direction:row;flex-wrap:wrap;gap:1.5rem;margin-top:2rem}
+  .stat{text-align:left}
+  .container{padding:4rem 1.5rem}
+  .proj-featured,.proj-row{grid-template-columns:1fr}
+  .method-grid{grid-template-columns:repeat(2,1fr)}
+  .results-grid,.recos{grid-template-columns:1fr}
+  .about-wrap{grid-template-columns:1fr;gap:2rem}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+  .contact-wrap{padding:5rem 1.5rem 4rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">data<span class="dot">.</span>analyst</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#methodology">Méthode</a></li>
+    <li><a href="#results">Résultats</a></li>
+    <li><a href="#about">Profil</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-eyebrow">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">Data Analyst · Marketing & Commercial</span>
+  </div>
+  <h1>
+    Transformer la donnée<br>
+    <span class="line2">en décisions claires.</span><br>
+    <span class="outline">Pas juste en graphiques.</span>
+  </h1>
+  <p class="hero-lead">Segmentation client, analyse de funnel, prédiction de churn — je livre des insights que les équipes commerciales et marketing peuvent utiliser dès le lendemain matin.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-grad">Voir les projets</a>
+    <a href="#about" class="btn btn-ghost">Mon profil</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">541k</div><div class="stat-l">Transactions</div></div>
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">Segments RFM</div></div>
+    <div class="stat"><div class="stat-n">3</div><div class="stat-l">Projets</div></div>
+  </div>
+</section>
+
+<section class="container reveal" id="skills">
+  <div class="sec-head">
+    <span class="sec-idx">00</span>
+    <h2 class="sec-title">Stack technique</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="sk-card">
+      <span class="sk-badge b">Analyse</span>
+      <h3>SQL & bases de données</h3>
+      <p>Window functions, agrégations avancées, CTEs — pour explorer et préparer des millions de lignes efficacement.</p>
+      <div class="tags"><span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">PostgreSQL</span><span class="tag">SQLite</span></div>
+    </div>
+    <div class="sk-card">
+      <span class="sk-badge v">Visualisation</span>
+      <h3>Business Intelligence</h3>
+      <p>Dashboards interactifs orientés décision avec KPIs, drill-down et storytelling par la donnée.</p>
+      <div class="tags"><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">DAX</span><span class="tag">Looker Studio</span></div>
+    </div>
+    <div class="sk-card">
+      <span class="sk-badge s">Méthodes</span>
+      <h3>Segmentation & clustering</h3>
+      <p>RFM scoring, K-Means, analyse de cohortes et modèles comportementaux pour cibler juste.</p>
+      <div class="tags"><span class="tag">RFM</span><span class="tag">K-Means</span><span class="tag">Cohortes</span><span class="tag">Python / sklearn</span></div>
+    </div>
+    <div class="sk-card">
+      <span class="sk-badge i">Marketing</span>
+      <h3>Analytics commercial</h3>
+      <p>Funnel analysis, attribution, LTV, taux de conversion et performance de campagnes multi-canaux.</p>
+      <div class="tags"><span class="tag">Google Analytics</span><span class="tag">Funnel</span><span class="tag">A/B testing</span><span class="tag">CRM</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="container reveal" id="projects">
+  <div class="sec-head">
+    <span class="sec-idx">01</span>
+    <h2 class="sec-title">Projets</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="proj-featured">
+    <div class="proj-info">
+      <div class="proj-idx">Projet 01 / 03</div>
+      <div class="proj-label">Segmentation client · E-commerce UK</div>
+      <h2>Customer RFM<br>Segmentation</h2>
+      <p>Analyse de 541 000+ transactions e-commerce. Calcul des scores Recency, Frequency et Monetary en SQL, clustering en 6 segments comportementaux, dashboard Power BI avec recommandations actionnables.</p>
+      <div class="proj-kpis">
+        <div><div class="kpi-v">541k</div><div class="kpi-l">Transactions</div></div>
+        <div><div class="kpi-v">4 338</div><div class="kpi-l">Clients</div></div>
+        <div><div class="kpi-v">6</div><div class="kpi-l">Segments</div></div>
+      </div>
+      <div class="stack">
+        <span class="stag">SQL</span><span class="stag">Power BI</span><span class="stag">Python</span><span class="stag">RFM scoring</span><span class="stag">NTILE()</span>
+      </div>
+    </div>
+    <div class="proj-viz">
+      <div class="viz-lbl">Distribution segments — Revenus</div>
+      <div class="seg-bars">
+        <div class="seg-row"><span class="seg-nm">Champions</span><div class="seg-track"><div class="seg-fill" style="width:82%;background:rgba(79,142,255,0.28);color:#7eb3ff">82%</div></div><span class="seg-amt">£1.2M</span></div>
+        <div class="seg-row"><span class="seg-nm">Loyal</span><div class="seg-track"><div class="seg-fill" style="width:60%;background:rgba(110,120,255,0.22);color:#9ba8ff">60%</div></div><span class="seg-amt">£890k</span></div>
+        <div class="seg-row"><span class="seg-nm">Potentiels</span><div class="seg-track"><div class="seg-fill" style="width:43%;background:rgba(155,107,255,0.18);color:#b896ff">43%</div></div><span class="seg-amt">£641k</span></div>
+        <div class="seg-row"><span class="seg-nm">Nouveaux</span><div class="seg-track"><div class="seg-fill" style="width:28%;background:rgba(255,255,255,0.06);color:#666890">28%</div></div><span class="seg-amt">£408k</span></div>
+        <div class="seg-row"><span class="seg-nm">À risque</span><div class="seg-track"><div class="seg-fill" style="width:17%;background:rgba(255,95,122,0.18);color:#ff7fa0">17%</div></div><span class="seg-amt">£263k</span></div>
+        <div class="seg-row"><span class="seg-nm">Perdus</span><div class="seg-track"><div class="seg-fill" style="width:9%;background:rgba(255,95,122,0.10);color:#cc5570">9%</div></div><span class="seg-amt">£131k</span></div>
+      </div>
+      <div class="viz-lbl" style="margin-top:.25rem">Scatter RFM — Recency vs Frequency</div>
+      <div class="scatter-box">
+        <svg width="100%" viewBox="0 0 280 128" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="8" x2="30" y2="112" stroke="rgba(110,120,255,0.15)" stroke-width="0.5"/>
+          <line x1="30" y1="112" x2="274" y2="112" stroke="rgba(110,120,255,0.15)" stroke-width="0.5"/>
+          <text x="15" y="12" font-size="7" fill="#354060" font-family="Geist Mono,monospace">F↑</text>
+          <text x="268" y="120" font-size="7" fill="#354060" font-family="Geist Mono,monospace">R→</text>
+          <circle cx="238" cy="18" r="7.5" fill="rgba(79,142,255,0.55)"/>
+          <circle cx="220" cy="28" r="5.5" fill="rgba(79,142,255,0.42)"/>
+          <circle cx="252" cy="30" r="4" fill="rgba(79,142,255,0.35)"/>
+          <circle cx="196" cy="42" r="6.5" fill="rgba(110,120,255,0.5)"/>
+          <circle cx="178" cy="52" r="4.5" fill="rgba(110,120,255,0.38)"/>
+          <circle cx="212" cy="56" r="5" fill="rgba(110,120,255,0.38)"/>
+          <circle cx="216" cy="70" r="4" fill="rgba(155,107,255,0.4)"/>
+          <circle cx="198" cy="76" r="3" fill="rgba(155,107,255,0.3)"/>
+          <circle cx="236" cy="78" r="3.5" fill="rgba(155,107,255,0.3)"/>
+          <circle cx="248" cy="86" r="4" fill="rgba(200,200,255,0.2)"/>
+          <circle cx="260" cy="94" r="3" fill="rgba(200,200,255,0.15)"/>
+          <circle cx="76" cy="44" r="5.5" fill="rgba(255,95,122,0.5)"/>
+          <circle cx="58" cy="54" r="4" fill="rgba(255,95,122,0.38)"/>
+          <circle cx="96" cy="60" r="3.5" fill="rgba(255,95,122,0.3)"/>
+          <circle cx="44" cy="84" r="4.5" fill="rgba(255,95,122,0.28)"/>
+          <circle cx="54" cy="95" r="3" fill="rgba(255,95,122,0.22)"/>
+          <circle cx="36" cy="70" r="3" fill="rgba(255,95,122,0.22)"/>
+          <circle cx="38" cy="11" r="3" fill="rgba(79,142,255,0.8)"/>
+          <text x="44" y="14.5" font-size="6.5" fill="#5570a0" font-family="Geist Mono,monospace">Champions</text>
+          <circle cx="106" cy="11" r="3" fill="rgba(110,120,255,0.8)"/>
+          <text x="112" y="14.5" font-size="6.5" fill="#5570a0" font-family="Geist Mono,monospace">Loyal</text>
+          <circle cx="150" cy="11" r="3" fill="rgba(255,95,122,0.8)"/>
+          <text x="156" y="14.5" font-size="6.5" fill="#5570a0" font-family="Geist Mono,monospace">À risque / Perdus</text>
+        </svg>
+      </div>
+      <div class="mini-kpis">
+        <div class="mkpi"><div class="mkpi-v" style="color:var(--blue)">£1 447</div><div class="mkpi-l">Monetary moy.</div></div>
+        <div class="mkpi"><div class="mkpi-v" style="color:var(--indigo)">3.9×</div><div class="mkpi-l">Frequency moy.</div></div>
+        <div class="mkpi"><div class="mkpi-v" style="color:var(--violet)">87j</div><div class="mkpi-l">Recency moy.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-row">
+    <div class="proj-card">
+      <div class="proj-label">Projet 02 · Funnel Marketing</div>
+      <h3>Conversion Funnel Analysis</h3>
+      <p>Analyse du parcours client sur un site e-commerce — identification des points de friction par canal d'acquisition et recommandations d'optimisation.</p>
+      <div class="funnel">
+        <div class="f-row"><span class="f-lbl">Sessions</span><div class="f-track"><div class="f-bar" style="width:100%;background:rgba(79,142,255,0.28)">100%</div></div><span class="f-num">48 220</span></div>
+        <div class="f-row"><span class="f-lbl">Produit vu</span><div class="f-track"><div class="f-bar" style="width:68%;background:rgba(96,160,255,0.22)">68%</div></div><span class="f-num">32 790</span></div>
+        <div class="f-row"><span class="f-lbl">Panier</span><div class="f-track"><div class="f-bar" style="width:31%;background:rgba(110,120,255,0.20)">31%</div></div><span class="f-num">14 948</span></div>
+        <div class="f-row"><span class="f-lbl">Checkout</span><div class="f-track"><div class="f-bar" style="width:18%;background:rgba(140,100,255,0.18)">18%</div></div><span class="f-num">8 680</span></div>
+        <div class="f-row"><span class="f-lbl">Achat</span><div class="f-track"><div class="f-bar" style="width:9%;background:rgba(79,142,255,0.4);color:#9ec8ff">9.2%</div></div><span class="f-num">4 436</span></div>
+      </div>
+      <div class="stack"><span class="stag">SQL</span><span class="stag">Tableau</span><span class="stag">Google Analytics</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-label">Projet 03 · Prédiction Churn</div>
+      <h3>Churn Prediction Dashboard</h3>
+      <p>Scoring comportemental pour identifier les clients à risque de départ — alertes automatisées et plan de rétention ciblé par segment.</p>
+      <div class="churn-row-wrap">
+        <div class="donut-wrap">
+          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff5f7a"/><stop offset="100%" stop-color="#c83060"/></linearGradient></defs>
+            <circle cx="44" cy="44" r="33" fill="none" stroke="rgba(110,120,255,0.08)" stroke-width="9"/>
+            <circle cx="44" cy="44" r="33" fill="none" stroke="url(#dg)" stroke-width="9" stroke-dasharray="62 145" stroke-linecap="round" transform="rotate(-90 44 44)"/>
+            <circle cx="44" cy="44" r="33" fill="none" stroke="rgba(79,142,255,0.55)" stroke-width="9" stroke-dasharray="145 207" stroke-dashoffset="-62" stroke-linecap="round" transform="rotate(-90 44 44)"/>
+          </svg>
+          <div class="donut-inner"><div class="donut-pct">30%</div><div class="donut-sub">churn risk</div></div>
+        </div>
+        <div class="churn-details">
+          <div class="ch-row"><span>Risque élevé</span><span style="color:#ff7fa0">1 301</span></div>
+          <div class="ch-row"><span>Risque moyen</span><span style="color:var(--violet)">2 140</span></div>
+          <div class="ch-row"><span>Stable</span><span style="color:var(--blue)">3 037</span></div>
+          <div class="ch-row"><span>Total</span><span style="color:var(--text)">6 478</span></div>
+        </div>
+      </div>
+      <div class="stack"><span class="stag">Python</span><span class="stag">Power BI</span><span class="stag">Scoring comportemental</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="container reveal" id="methodology">
+  <div class="sec-head">
+    <span class="sec-idx">02</span>
+    <h2 class="sec-title">Méthodologie RFM</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="method-grid">
+    <div class="mstep"><div class="mstep-n">01</div><h4><em>Collecte</em> & nettoyage</h4><p>Import du dataset, exclusion des retours (InvoiceNo LIKE 'C%'), filtrage des CustomerID nuls et valeurs aberrantes.</p></div>
+    <div class="mstep"><div class="mstep-n">02</div><h4><em>Calcul</em> RFM</h4><p>Recency = jours depuis dernier achat. Frequency = commandes distinctes. Monetary = somme des revenus par client.</p></div>
+    <div class="mstep"><div class="mstep-n">03</div><h4><em>Scoring</em> NTILE(5)</h4><p>Chaque métrique divisée en 5 quintiles via NTILE(). Les scores R, F, M sont combinés en segment comportemental.</p></div>
+    <div class="mstep"><div class="mstep-n">04</div><h4><em>Insights</em> & dashboard</h4><p>Attribution des 6 segments. Dashboard Power BI avec filtres dynamiques et recommandations marketing par segment.</p></div>
+  </div>
+  <div class="sql-block">
+    <div class="sql-bar">
+      <span class="sql-name">rfm_scoring.sql — Extrait principal</span>
+      <span class="sql-lang">SQL · DuckDB</span>
+    </div>
+    <pre><span class="cm">-- Étape 1 : calcul des métriques brutes par client</span>
+<span class="kw">CREATE VIEW</span> rfm_raw <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+    CustomerID,
+    <span class="fn">DATEDIFF</span>(<span class="str">'day'</span>, <span class="fn">MAX</span>(InvoiceDate), <span class="kw">DATE</span> <span class="str">'2011-12-10'</span>) <span class="kw">AS</span> recency,
+    <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> InvoiceNo)                              <span class="kw">AS</span> frequency,
+    <span class="fn">SUM</span>(Quantity * UnitPrice)                              <span class="kw">AS</span> monetary
+<span class="kw">FROM</span> online_retail
+<span class="kw">WHERE</span> CustomerID <span class="kw">IS NOT NULL</span>
+  <span class="kw">AND</span> Quantity   > <span class="nc">0</span>
+  <span class="kw">AND</span> UnitPrice  > <span class="nc">0</span>
+  <span class="kw">AND</span> InvoiceNo  <span class="kw">NOT LIKE</span> <span class="str">'C%'</span>
+<span class="kw">GROUP BY</span> CustomerID;
+
+<span class="cm">-- Étape 2 : scoring quintile et attribution des segments</span>
+<span class="kw">CREATE VIEW</span> rfm_segments <span class="kw">AS</span>
+<span class="kw">SELECT</span> *,
+    <span class="fn">NTILE</span>(<span class="nc">5</span>) <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> recency   <span class="kw">ASC</span>)  <span class="kw">AS</span> r_score,
+    <span class="fn">NTILE</span>(<span class="nc">5</span>) <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> frequency <span class="kw">DESC</span>) <span class="kw">AS</span> f_score,
+    <span class="fn">NTILE</span>(<span class="nc">5</span>) <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> monetary  <span class="kw">DESC</span>) <span class="kw">AS</span> m_score,
+    <span class="kw">CASE</span>
+        <span class="kw">WHEN</span> r_score >= <span class="nc">4</span> <span class="kw">AND</span> f_score >= <span class="nc">4</span> <span class="kw">THEN</span> <span class="str">'Champions'</span>
+        <span class="kw">WHEN</span> r_score >= <span class="nc">3</span> <span class="kw">AND</span> f_score >= <span class="nc">3</span> <span class="kw">THEN</span> <span class="str">'Loyal customers'</span>
+        <span class="kw">WHEN</span> r_score >= <span class="nc">4</span> <span class="kw">AND</span> f_score <= <span class="nc">2</span> <span class="kw">THEN</span> <span class="str">'New customers'</span>
+        <span class="kw">WHEN</span> r_score <= <span class="nc">2</span> <span class="kw">AND</span> f_score >= <span class="nc">3</span> <span class="kw">THEN</span> <span class="str">'At-risk'</span>
+        <span class="kw">WHEN</span> r_score <= <span class="nc">2</span> <span class="kw">AND</span> f_score <= <span class="nc">2</span> <span class="kw">THEN</span> <span class="str">'Lost'</span>
+        <span class="kw">ELSE</span>                                       <span class="str">'Potential loyalists'</span>
+    <span class="kw">END AS</span> segment
+<span class="kw">FROM</span> rfm_raw;</pre>
+  </div>
+</section>
+
+<section class="container reveal" id="results">
+  <div class="sec-head">
+    <span class="sec-idx">03</span>
+    <h2 class="sec-title">Résultats & recommandations</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="results-grid">
+    <div class="res-card">
+      <div class="res-num" style="background:linear-gradient(135deg,var(--blue),var(--indigo));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">19%</div>
+      <h4>Champions identifiés</h4>
+      <p>19% des clients génèrent 47% du CA total — priorité absolue pour le programme de fidélisation VIP.</p>
+    </div>
+    <div class="res-card">
+      <div class="res-num" style="background:linear-gradient(135deg,var(--violet),#c060ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">£263k</div>
+      <h4>Revenus à risque</h4>
+      <p>Les clients "At-risk" représentent £263k de revenus récupérables via une campagne de réactivation ciblée.</p>
+    </div>
+    <div class="res-card">
+      <div class="res-num" style="background:linear-gradient(135deg,var(--sky),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">×3.8</div>
+      <h4>Écart Champions / Perdus</h4>
+      <p>Le panier moyen des Champions est 3.8× supérieur aux clients perdus — justifie un traitement VIP différencié.</p>
+    </div>
+  </div>
+  <div class="recos">
+    <div class="reco">
+      <div class="reco-seg">Champions + Loyal</div>
+      <h4>Fidélisation & montée en gamme</h4>
+      <ul><li>Programme VIP early access</li><li>Upsell produits premium</li><li>Événements exclusifs</li><li>Enquêtes NPS pour co-création</li></ul>
+    </div>
+    <div class="reco mid">
+      <div class="reco-seg">At-risk + Potentiels</div>
+      <h4>Réactivation ciblée</h4>
+      <ul><li>Email personnalisé J+60</li><li>Offre de réduction temporaire</li><li>Reco basée sur historique</li><li>Séquence SMS de rappel</li></ul>
+    </div>
+    <div class="reco low">
+      <div class="reco-seg">Lost + New customers</div>
+      <h4>Reconquête & onboarding</h4>
+      <ul><li>Offre de reconquête agressive</li><li>Série d'emails d'onboarding</li><li>Retargeting display cross-canal</li><li>Analyse des raisons de départ</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="container reveal" id="about">
+  <div class="sec-head">
+    <span class="sec-idx">04</span>
+    <h2 class="sec-title">Profil</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="about-wrap">
+    <div class="about-txt">
+      <h2>Donner du sens<br><span>à la donnée.</span></h2>
+      <p>Data analyst avec une orientation <strong>marketing et commercial</strong>, je m'intéresse autant aux chiffres qu'aux décisions qu'ils permettent de prendre.</p>
+      <p>Mon approche : partir du <strong>problème métier</strong>, choisir la méthode analytique adaptée, et livrer des insights que les équipes peuvent utiliser le lendemain matin.</p>
+      <p>Disponible pour des missions en <strong>data marketing, analytics commercial, segmentation client</strong> ou analyse de performance campagnes.</p>
+      <div class="about-cta"><a href="#contact" class="btn btn-grad">Me contacter</a></div>
+    </div>
+    <div>
+      <div class="sk-group">
+        <div class="sk-group-title">Analyse & traitement</div>
+        <div class="sk-pills"><span class="sk-pill">SQL avancé</span><span class="sk-pill">Python / pandas</span><span class="sk-pill">DuckDB</span><span class="sk-pill">Power Query</span></div>
+      </div>
+      <div class="sk-group">
+        <div class="sk-group-title">Visualisation</div>
+        <div class="sk-pills"><span class="sk-pill">Power BI</span><span class="sk-pill">Tableau</span><span class="sk-pill">DAX</span><span class="sk-pill">Looker Studio</span></div>
+      </div>
+      <div class="sk-group">
+        <div class="sk-group-title">Méthodes</div>
+        <div class="sk-pills"><span class="sk-pill">RFM scoring</span><span class="sk-pill">K-Means</span><span class="sk-pill">Cohortes</span><span class="sk-pill">Funnel analysis</span><span class="sk-pill">Churn prediction</span><span class="sk-pill">A/B testing</span></div>
+      </div>
+      <div class="sk-group">
+        <div class="sk-group-title">Domaines</div>
+        <div class="sk-pills"><span class="sk-pill">E-commerce</span><span class="sk-pill">Marketing digital</span><span class="sk-pill">CRM</span><span class="sk-pill">Retail</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-wrap reveal" id="contact">
+  <h2>Travaillons<br><span>ensemble.</span></h2>
+  <p>Ouvert aux opportunités en data marketing & analytics commercial.</p>
+  <div class="contact-btns">
+    <a href="mailto:votre@email.com" class="btn btn-grad">votre@email.com</a>
+    <a href="https://linkedin.com/in/votre-profil" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    <a href="https://github.com/votre-github" class="btn btn-ghost" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<footer>
+  <span class="foot-copy">© 2024 — Data Analyst Portfolio</span>
+  <div class="foot-links"><a href="#projects">Projets</a><a href="#methodology">Méthode</a><a href="#about">Profil</a></div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target)}})},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+</script>
+</body>
+</html>
